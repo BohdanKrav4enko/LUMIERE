@@ -1,7 +1,8 @@
 import * as S from "../styles/NavbarStyle";
 import {scrollToSection} from "../../../utils";
 import type Lenis from "lenis";
-import {type RefObject, useEffect} from "react";
+import {type RefObject} from "react";
+import {useLockBodyScroll} from "../../../hooks";
 
 
 interface MobileMenuProps {
@@ -15,29 +16,11 @@ export const MobileMenu = ({
                                setIsOpen,
                                lenisRef
                            }: MobileMenuProps) => {
-    useEffect(() => {
-        const lenis = lenisRef.current;
 
-        if (!lenis) return;
-
-        if (isOpen) {
-            lenis.stop();
-
-            document.body.style.overflow = "hidden";
-            document.body.style.touchAction = "none";
-        } else {
-            lenis.start();
-
-            document.body.style.overflow = "";
-            document.body.style.touchAction = "";
-        }
-
-        return () => {
-            document.body.style.overflow = "";
-            document.body.style.touchAction = "";
-        };
-    }, [isOpen, lenisRef]);
-
+    useLockBodyScroll(
+        isOpen,
+        lenisRef,
+    );
 
     return (
         <>

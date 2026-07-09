@@ -11,7 +11,7 @@ export const App = () => {
         <SignatureMenu/>
         <Menu/>
         <Gallery/>
-        <Reservation/>
+        <Reservation lenisRef={lenisRef}/>
         <Footer/>
         <ScrollToTop/>
     </>

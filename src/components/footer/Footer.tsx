@@ -1,4 +1,5 @@
 import * as S from "./styles/FooterStyle";
+import {scrollToSection} from "../../utils";
 
 export const Footer = () => {
     return (
@@ -16,16 +17,20 @@ export const Footer = () => {
 
             <S.Links>
 
-                <S.Link href="#">
+                <S.Link
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Instagram
                 </S.Link>
 
-                <S.Link href="#">
-                    Contact
+                <S.Link onClick={() => scrollToSection("reservation")}>
+                    Reserve
                 </S.Link>
 
-                <S.Link href="#">
-                    Location
+                <S.Link onClick={() => scrollToSection("signature")}>
+                    Menu
                 </S.Link>
 
             </S.Links>

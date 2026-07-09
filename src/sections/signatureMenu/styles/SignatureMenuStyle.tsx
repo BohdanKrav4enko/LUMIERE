@@ -66,6 +66,163 @@ export const Title = styled.h2`
     margin-bottom: 25px;
 `;
 
+export const Slider = styled.div`
+    overflow: hidden;
+`;
+
+export const Track = styled.div`
+
+    display: flex;
+
+    gap: 30px;
+
+
+    overflow-x: auto;
+
+
+    scroll-snap-type: x mandatory;
+
+
+    scrollbar-width: none;
+
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media (max-width: ${({theme}) => theme.media.mobile}) {
+
+        padding: 0 24px;
+
+    }
+`;
+
+export const Card = styled.article`
+
+    flex:0 0 calc(33.333% - 20px);
+
+
+    scroll-snap-align:start;
+
+
+
+    @media(max-width:${({theme})=>theme.media.tablet}) {
+
+        flex:0 0 calc(50% - 15px);
+
+    }
+
+
+
+    @media(max-width:${({theme})=>theme.media.mobile}) {
+
+        flex:0 0 88%;
+
+    }
+
+`;
+
+export const Image = styled.img`
+
+    width:100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit:cover;
+
+
+    margin-bottom:20px;
+
+
+    filter:
+            brightness(.85);
+
+
+
+    transition:
+            ${({theme})=>theme.transition.default};
+
+
+
+    ${Card}:hover & {
+        transform:scale(1.03);
+    }
+
+
+
+    @media(max-width:${({theme})=>theme.media.mobile}) {
+
+        aspect-ratio:1 / 1.15;
+
+    }
+
+`;
+
+export const Name = styled.h3`
+
+    font-family:
+            ${({theme})=>theme.fonts.heading};
+
+
+    font-size:34px;
+
+    font-weight:400;
+
+
+    color:
+            ${({theme})=>theme.colors.text};
+
+
+    line-height:1.1;
+
+
+    min-height:75px;
+
+
+
+    @media(max-width:${({theme})=>theme.media.tablet}) {
+
+        font-size:30px;
+
+    }
+
+
+
+    @media(max-width:${({theme})=>theme.media.mobile}) {
+
+        font-size:26px;
+
+        min-height:58px;
+
+    }
+
+`;
+
+export const Description = styled.p`
+
+    color:
+            ${({theme})=>theme.colors.muted};
+
+
+    line-height:1.7;
+
+
+    font-size:15px;
+
+
+    min-height:51px;
+
+
+
+    @media(max-width:${({theme})=>theme.media.mobile}) {
+
+        font-size:14px;
+
+        min-height:48px;
+
+    }
+
+`;
 
 export const Subtitle = styled.p`
     max-width: 500px;
@@ -82,84 +239,101 @@ export const Subtitle = styled.p`
 
 
 
-export const MenuList = styled.div`
-    display: flex;
-
-    flex-direction: column;
-`;
-
-
-
-export const Item = styled.div`
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 30px;
-
-
-    padding: 35px 0;
-
-
-    border-bottom:
-        1px solid rgba(198,161,91,0.2);
-
-
-    transition: ${({ theme }) => theme.transition.default};
-
-
-    &:hover {
-        padding-left: 15px;
-
-        border-color:
-            ${({ theme }) => theme.colors.gold};
-    }
-
-
-    @media(max-width: ${({ theme }) => theme.media.mobile}) {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-`;
-
-
-
-export const Name = styled.h3`
-    color: ${({ theme }) => theme.colors.text};
-
-    font-size: 32px;
-
-    font-weight: 400;
-
-    margin-bottom: 12px;
-
-
-    @media(max-width: ${({ theme }) => theme.media.mobile}) {
-        font-size: 26px;
-    }
-`;
-
-
-
-export const Description = styled.p`
-    color: ${({ theme }) => theme.colors.muted};
-
-    font-size: 16px;
-
-    line-height: 1.7;
-`;
-
 
 
 export const Price = styled.span`
-    color: ${({ theme }) => theme.colors.gold};
 
-    font-family: ${({ theme }) => theme.fonts.heading};
+    display:block;
 
-    font-size: 32px;
 
-    white-space: nowrap;
+    margin-top:20px;
+
+
+    color:
+            ${({theme})=>theme.colors.gold};
+
+
+    font-family:
+            ${({theme})=>theme.fonts.heading};
+
+
+    font-size:30px;
+
+
+
+    @media(max-width:${({theme})=>theme.media.mobile}) {
+
+        font-size:26px;
+
+    }
+
+`;
+
+export const Controls = styled.div`
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    gap:25px;
+
+
+    margin-top:45px;
+
+
+`;
+
+export const ArrowButton = styled.button`
+
+    width: 50px;
+
+    height: 50px;
+
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+
+    background: transparent;
+
+
+    border: 1px solid ${({theme}) => theme.colors.gold};
+
+
+    color: ${({theme}) => theme.colors.gold};
+
+
+    font-size: 20px;
+
+
+    cursor: pointer;
+
+
+    transition: ${({theme}) => theme.transition.default};
+
+
+    &:hover {
+
+        background: ${({theme}) => theme.colors.gold};
+
+
+        color: ${({theme}) => theme.colors.background};
+
+    }
+
+    @media (max-width: ${({theme}) => theme.media.mobile}) {
+
+        width: 44px;
+
+        height: 44px;
+
+        font-size: 18px;
+
+    }
 `;

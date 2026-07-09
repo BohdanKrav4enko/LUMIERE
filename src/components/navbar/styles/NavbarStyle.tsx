@@ -37,6 +37,12 @@ export const Nav = styled.nav`
 
 
 export const Logo = styled.a`
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
     font-family: ${({ theme }) => theme.fonts.heading};
 
     font-size: 28px;
@@ -47,16 +53,34 @@ export const Logo = styled.a`
 
     white-space: nowrap;
 
+    img {
+        width: 70px;
+        height: 70px;
 
-    @media(max-width:${({ theme }) => theme.media.tablet}) {
-        font-size: 24px;
+        object-fit: contain;
+
+        flex-shrink: 0;
     }
 
+    @media(max-width:${({ theme }) => theme.media.tablet}) {
+        font-size: 22px;
+        gap: 14px;
+
+        img {
+            width: 58px;
+            height: 58px;
+        }
+    }
 
     @media(max-width:${({ theme }) => theme.media.mobile}) {
-        font-size: 20px;
+        font-size: 18px;
+        letter-spacing: 0.2em;
+        gap: 10px;
 
-        letter-spacing: 0.25em;
+        img {
+            width: 48px;
+            height: 48px;
+        }
     }
 `;
 
@@ -124,10 +148,11 @@ export const Burger = styled.button`
 
     z-index: 1001;
 
-    @media(max-width: ${({ theme }) => theme.media.tablet}) {
+    @media (max-width: ${({theme}) => theme.media.tablet}) {
         display: flex;
         align-items: center;
         justify-content: center;
+        transform: translateY(-2px);
     }
 `;
 

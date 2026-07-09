@@ -95,6 +95,7 @@ export const Links = styled.div`
 
 
 export const Link = styled.a`
+    cursor: pointer;
     color:
         ${({ theme }) => theme.colors.muted};
 

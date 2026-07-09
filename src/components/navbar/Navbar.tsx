@@ -5,20 +5,21 @@ import {MobileMenu} from "./components/MobileMenu.tsx";
 import {type RefObject, useState} from "react";
 import type Lenis from "lenis";
 
-interface Props {
+export interface PropsLenisRef {
     lenisRef: RefObject<Lenis | null>;
 }
 
-export const Navbar = ({ lenisRef  }: Props) => {
+export const Navbar = ({ lenisRef  }: PropsLenisRef) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <Header>
             <Container>
-                <Nav>
 
+                <Nav>
                     <Logo>
+                        <img alt={'logo'} src={'/images/logo.webp'}/>
                         L U M I È R E
                     </Logo>
 
@@ -27,7 +28,7 @@ export const Navbar = ({ lenisRef  }: Props) => {
                             About
                         </NavLink>
 
-                        <NavLink onClick={() => scrollToSection("menu")}>
+                        <NavLink onClick={() => scrollToSection("signature")}>
                             Menu
                         </NavLink>
 
@@ -35,8 +36,8 @@ export const Navbar = ({ lenisRef  }: Props) => {
                             Gallery
                         </NavLink>
 
-                        <NavLink onClick={() => scrollToSection("contact")}>
-                            Contact
+                        <NavLink onClick={() => scrollToSection("reservation")}>
+                            Reserve
                         </NavLink>
                     </NavLinks>
                     <MobileMenu

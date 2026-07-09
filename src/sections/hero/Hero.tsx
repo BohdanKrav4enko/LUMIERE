@@ -1,5 +1,6 @@
 import * as S from "./styles/HeroStyle";
 import {MotionSection} from "../../components";
+import {scrollToSection} from "../../utils";
 
 
 export const Hero = () => {
@@ -24,7 +25,7 @@ export const Hero = () => {
                         Discover an unforgettable fine dining experience.
                     </S.Description>
 
-                    <S.Button>
+                    <S.Button onClick={()=>scrollToSection("reservation")}>
                         Reserve a Table
                     </S.Button>
 

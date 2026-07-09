@@ -1,11 +1,17 @@
-import { MotionSection } from "../../components";
+import {MotionSection, ReservationModal, Notification} from "../../components";
 import * as S from "./styles/ReservationStyle";
+import {useState} from "react";
+import type {PropsLenisRef} from "../../components/navbar/Navbar.tsx";
 
 
-export const Reservation = () => {
-    return (
+export const Reservation = ({ lenisRef  }: PropsLenisRef) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
+
+    return (<>
         <MotionSection>
-            <S.Section id="contact">
+            <S.Section id="reservation">
 
                 <S.Wrapper>
 
@@ -25,7 +31,7 @@ export const Reservation = () => {
                     </S.Description>
 
 
-                    <S.Button>
+                    <S.Button onClick={() => setIsOpen(true)}>
                         Book a table
                     </S.Button>
 
@@ -40,5 +46,18 @@ export const Reservation = () => {
 
             </S.Section>
         </MotionSection>
-    );
+        <ReservationModal
+            lenisRef={lenisRef}
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+            onSuccess={() => {
+                setShowNotification(true);
+
+                setTimeout(() => {
+                    setShowNotification(false);
+                }, 4000);
+            }}
+        />
+        <Notification open={showNotification} />
+    </> );
 };
