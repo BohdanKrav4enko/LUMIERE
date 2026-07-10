@@ -5,7 +5,7 @@ export const signatureDishes = [
         description:
             "Wild mushrooms, parmesan and white truffle",
         price: "€48",
-        image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601",
+        image: "/images/signatureMenu/signature-Truffle-Risotto.webp",
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ export const signatureDishes = [
         description:
             "Japanese wagyu with seasonal vegetables",
         price: "€95",
-        image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d",
+        image: "/images/signatureMenu/signature-Wagyu-Tenderloin.webp",
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ export const signatureDishes = [
         description:
             "Premium beef fillet wrapped in puff pastry with mushroom duxelles",
         price: "€85",
-        image: "https://images.unsplash.com/photo-1600891964092-4316c288032e",
+        image: "/images/signatureMenu/signature-BeefWellington.webp",
     },
     {
         id: 4,
@@ -29,7 +29,7 @@ export const signatureDishes = [
         description:
             "Classic lobster with creamy mustard sauce",
         price: "€120",
-        image: "https://images.unsplash.com/photo-1559742811-822873691df8",
+        image: "/images/signatureMenu/signature-LobsterThermidor.webp",
     },
     {
         id: 5,
@@ -37,7 +37,7 @@ export const signatureDishes = [
         description:
             "Roasted duck with cherry reduction",
         price: "€68",
-        image: "https://images.unsplash.com/photo-1547592180-85f173990554",
+        image: "/images/signatureMenu/signature-DuckRoyale.webp",
     },
     {
         id: 6,
@@ -45,6 +45,6 @@ export const signatureDishes = [
         description:
             "Dark chocolate and vanilla cream",
         price: "€24",
-        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c",
+        image: "/images/signatureMenu/signatureChocolateSouffle.webp",
     },
 ];

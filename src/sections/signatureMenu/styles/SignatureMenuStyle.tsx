@@ -270,70 +270,69 @@ export const Price = styled.span`
 `;
 
 export const Controls = styled.div`
+    display: flex;
 
-    display:flex;
+    justify-content: center;
+    align-items: center;
 
-    justify-content:center;
+    gap: 25px;
 
-    align-items:center;
-
-
-    gap:25px;
-
-
-    margin-top:45px;
-
-
+    margin-top: 45px;
 `;
 
 export const ArrowButton = styled.button`
-
     width: 50px;
-
     height: 50px;
-
 
     display: flex;
 
     justify-content: center;
-
     align-items: center;
-
 
     background: transparent;
 
+    border: 1px solid ${({ theme }) => theme.colors.gold};
 
-    border: 1px solid ${({theme}) => theme.colors.gold};
-
-
-    color: ${({theme}) => theme.colors.gold};
-
+    color: ${({ theme }) => theme.colors.gold};
 
     font-size: 20px;
 
-
     cursor: pointer;
 
+    transition: ${({ theme }) => theme.transition.default};
 
-    transition: ${({theme}) => theme.transition.default};
+    &:hover:not(:disabled) {
+        background: ${({ theme }) => theme.colors.gold};
 
-
-    &:hover {
-
-        background: ${({theme}) => theme.colors.gold};
-
-
-        color: ${({theme}) => theme.colors.background};
-
+        color: ${({ theme }) => theme.colors.background};
     }
 
-    @media (max-width: ${({theme}) => theme.media.mobile}) {
+    &:disabled {
+        opacity: 0.35;
 
+        cursor: default;
+
+        pointer-events: none;
+    }
+
+    @media (max-width: ${({ theme }) => theme.media.mobile}) {
         width: 44px;
 
         height: 44px;
 
         font-size: 18px;
-
     }
+`;
+export const Pagination = styled.div`
+    min-width: 90px;
+
+    color: ${({ theme }) => theme.colors.muted};
+
+    font-size: 14px;
+
+    letter-spacing: 0.35em;
+
+    text-align: center;
+
+    user-select: none;
 `;

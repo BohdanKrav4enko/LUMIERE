@@ -15,7 +15,7 @@ interface Props {
 
 type ReservationFormData = {
     name: string;
-    email: string;
+    phone: number;
     date: string;
     time: string;
     guests: string;
@@ -101,19 +101,19 @@ export const ReservationModal = ({
                     </S.Field>
                     <S.Field>
                         <S.Input
-                            type="email"
-                            placeholder="Email address"
-                            {...register("email", {
-                                required: "Please enter your email",
+                            type="tel"
+                            placeholder="Phone number"
+                            {...register("phone", {
+                                required: "Please enter your phone number",
                                 pattern: {
-                                    value: /^\S+@\S+\.\S+$/,
-                                    message: "Please enter a valid email",
+                                    value: /^[+]?[0-9\s\-()]{7,20}$/,
+                                    message: "Please enter a valid phone number",
                                 },
                             })}
                         />
-                        {errors.email && (
+                        {errors.phone && (
                             <S.Error>
-                                {errors.email.message}
+                                {errors.phone.message}
                             </S.Error>
                         )}
                     </S.Field>
