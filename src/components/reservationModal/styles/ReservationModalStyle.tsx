@@ -192,6 +192,22 @@ export const Input = styled.input`
         font-size:10px;
     }
 `;
+export const Label = styled.label`
+    width: 80%;
+
+    margin-bottom: 8px;
+
+    color: ${({ theme }) => theme.colors.muted};
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .15em;
+
+    text-align: center;
+`;
+
 export const TextArea = styled.textarea`
     width:80%;
 

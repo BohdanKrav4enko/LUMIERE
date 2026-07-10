@@ -119,6 +119,8 @@ export const ReservationModal = ({
                     </S.Field>
                     <S.Row>
                         <S.Field>
+                            <S.Label>Date</S.Label>
+
                             <S.Input
                                 type="date"
                                 min={minDate}
@@ -134,7 +136,10 @@ export const ReservationModal = ({
                                 </S.Error>
                             )}
                         </S.Field>
+
                         <S.Field>
+                            <S.Label>Time</S.Label>
+
                             <S.Input
                                 type="time"
                                 {...register("time", {
