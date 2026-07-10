@@ -73,7 +73,6 @@ export const Slider = styled.div`
 export const Track = styled.div`
 
     display: flex;
-
     gap: 30px;
 
 
