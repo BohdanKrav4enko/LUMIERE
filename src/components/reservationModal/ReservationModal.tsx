@@ -12,6 +12,7 @@ interface Props {
     onClose: () => void;
     lenisRef: RefObject<Lenis | null>;
     onSuccess: () => void;
+    onError: () => void;
 }
 
 type ReservationFormData = {
@@ -28,9 +29,10 @@ export const ReservationModal = ({
                                      onClose,
                                      lenisRef,
                                      onSuccess,
+                                     onError
                                  }: Props) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const {
         register,
@@ -43,21 +45,37 @@ export const ReservationModal = ({
     useLockBodyScroll(isOpen, lenisRef);
 
     const onSubmit = async (data: ReservationFormData) => {
-        await emailjs.send(
-            import.meta.env.VITE_EMAILJS_SERVICE_ID,
-            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-            {
-                ...data,
-                message: data.message ||  t("reservationModal.defaultMessage"),
-            },
-            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-        );
 
-        onSuccess();
+        try {
 
-        reset();
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                {
+                    ...data,
+                    message:
+                        data.message ||
+                        t("reservationModal.defaultMessage"),
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
 
-        onClose();
+
+            onSuccess();
+
+            reset();
+
+            onClose();
+
+
+        } catch (error) {
+
+            console.error("EmailJS error:", error);
+
+            onError();
+
+        }
+
     };
 
     const today = new Date();

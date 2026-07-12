@@ -106,7 +106,9 @@
   },
   "notification": {
     "reservationConfirmed": "Reservation confirmed",
-    "reservationMessage": "Thank you for choosing Lumière. We look forward to welcoming you."
+    "reservationMessage": "Thank you for choosing Lumière. We look forward to welcoming you.",
+    "errorTitle": "Something went wrong",
+    "errorMessage": "We couldn't complete your reservation. Please try again later."
   },
   "footer": {
     "description": "Fine dining experience",

@@ -8,7 +8,9 @@ import {useTranslation} from "react-i18next";
 export const Reservation = ({lenisRef}: PropsLenisRef) => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [showNotification, setShowNotification] = useState(false);
+    const [notificationType, setNotificationType] = useState<
+        "success" | "error" | null
+    >(null);
 
     const {t} = useTranslation();
 
@@ -53,16 +55,37 @@ export const Reservation = ({lenisRef}: PropsLenisRef) => {
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
             onSuccess={() => {
-                setShowNotification(true);
+                setNotificationType("success");
 
                 setTimeout(() => {
-                    setShowNotification(false);
+                    setNotificationType(null);
                 }, 4000);
             }}
+            onError={() => {
+
+                setNotificationType("error");
+
+
+                setTimeout(() => {
+                    setNotificationType(null);
+                }, 4000);
+
+            }}
         />
-        <Notification title={t("notification.reservationConfirmed")}
-                      message={t("notification.reservationMessage")}
-                      open={showNotification}
+        <Notification
+            title={
+                notificationType === "success"
+                    ? t("notification.reservationConfirmed")
+                    : t("notification.errorTitle")
+            }
+
+            message={
+                notificationType === "success"
+                    ? t("notification.reservationMessage")
+                    : t("notification.errorMessage")
+            }
+
+            open={notificationType !== null}
         />
     </>);
 };
