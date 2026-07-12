@@ -1,4 +1,19 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
+
+const cardAppear = keyframes`
+
+    from {
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+
+`;
 
 
 export const Section = styled.section`
@@ -98,9 +113,10 @@ export const Card = styled.article`
 
     flex:0 0 calc(33.333% - 20px);
 
-
     scroll-snap-align:start;
 
+
+    animation: ${cardAppear} 1s cubic-bezier(.22,1,.36,1) both;
 
 
     @media(max-width:${({theme})=>theme.media.tablet}) {
