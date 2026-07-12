@@ -5,7 +5,39 @@
   },
   "gallery": {
     "title": "Gallery",
-    "description": "Every detail tells a story."
+    "description": "Every detail tells a story.",
+    "1": {
+      "alt": "Restaurant exterior",
+      "title": "The Entrance"
+    },
+    "2": {
+      "alt": "Main dining hall",
+      "title": "Main Hall"
+    },
+    "3": {
+      "alt": "Chef preparing dishes",
+      "title": "The Kitchen"
+    },
+    "4": {
+      "alt": "Signature dish",
+      "title": "Signature Cuisine"
+    },
+    "5": {
+      "alt": "Wine collection",
+      "title": "Wine Selection"
+    },
+    "6": {
+      "alt": "Luxury table setting",
+      "title": "Table Experience"
+    },
+    "7": {
+      "alt": "Private dining room",
+      "title": "Private Dining"
+    },
+    "8": {
+      "alt": "Evening atmosphere",
+      "title": "Evening Moments"
+    }
   },
   "hero": {
     "subtitle": "A journey of exceptional taste",

@@ -40,7 +40,7 @@ export const Gallery = () => {
 
                                 <S.Image
                                     src={src}
-                                    alt={alt}
+                                    alt={t(alt)}
                                     onError={(e) => {
                                         e.currentTarget.src = "/images/placeholder.avif";
                                     }}
@@ -48,7 +48,7 @@ export const Gallery = () => {
 
 
                                 <S.Caption>
-                                    {title}
+                                    {t(title)}
                                 </S.Caption>
 
 
