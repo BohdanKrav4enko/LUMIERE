@@ -49,7 +49,7 @@ export const MobileMenu = ({
                 </S.MobileLink>
 
                 <S.MobileLink onClick={() => {
-                    scrollToSection("menu");
+                    scrollToSection("signature");
                     setIsOpen(false);
                 }}>
                     {t("navbar.menu")}
