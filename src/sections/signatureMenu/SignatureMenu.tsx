@@ -1,58 +1,57 @@
 import { MotionSection } from "../../components";
 import * as S from "./styles/SignatureMenuStyle";
 import { signatureDishes } from "../../data/signatureMenu";
-import {useEffect, useRef} from "react";
+import { useEffect, useState } from "react";
+import {useTranslation} from "react-i18next";
 
 export const SignatureMenu = () => {
 
-    const sliderRef = useRef<HTMLDivElement>(null);
+    const { t } = useTranslation();
 
-    const scrollNext = () => {
-        if (!sliderRef.current) return;
-
-        sliderRef.current.scrollBy({
-            left: sliderRef.current.clientWidth,
-            behavior: "smooth",
-        });
-
-    };
-
-    const scrollPrev = () => {
-        if (!sliderRef.current) return;
-
-        sliderRef.current.scrollBy({
-            left: -sliderRef.current.clientWidth,
-            behavior: "smooth",
-        });
-    };
-
-    const loopDishes = [
-        ...signatureDishes,
-        ...signatureDishes,
-        ...signatureDishes,
-    ];
+    const [cardsPerPage, setCardsPerPage] = useState(3);
+    const [currentPage, setCurrentPage] = useState(0);
 
     useEffect(() => {
-        if (!sliderRef.current) return;
-        const slider = sliderRef.current;
-        slider.scrollLeft = slider.scrollWidth / 3;
+        const updateCardsPerPage = () => {
+            if (window.innerWidth < 768) {
+                setCardsPerPage(1);
+            } else if (window.innerWidth < 820) {
+                setCardsPerPage(2);
+            } else {
+                setCardsPerPage(3);
+            }
+        };
+
+        updateCardsPerPage();
+
+        window.addEventListener("resize", updateCardsPerPage);
+
+        return () => {
+            window.removeEventListener("resize", updateCardsPerPage);
+        };
     }, []);
 
-    const handleScroll = () => {
-        const slider = sliderRef.current;
-        if (!slider) return;
-        const width = slider.scrollWidth / 3;
-        if (slider.scrollLeft <= 0) {
-            slider.scrollLeft = width;
+    const totalPages = Math.ceil(
+        signatureDishes.length / cardsPerPage
+    );
+
+    const startIndex = currentPage * cardsPerPage;
+
+    const visibleDishes = signatureDishes.slice(
+        startIndex,
+        startIndex + cardsPerPage
+    );
+
+    const nextPage = () => {
+        if (currentPage < totalPages - 1) {
+            setCurrentPage(prev => prev + 1);
         }
+    };
 
-
-        if (slider.scrollLeft >= width * 2) {
-
-            slider.scrollLeft = width;
-
+    const prevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(prev => prev - 1);
         }
-
     };
 
     return (
@@ -62,74 +61,82 @@ export const SignatureMenu = () => {
 
                 <S.Wrapper>
 
-
                     <S.Number>
                         02
                     </S.Number>
 
-
                     <S.Title>
-                        Signature Menu
+                        {t("signature.title")}
                     </S.Title>
 
-
                     <S.Subtitle>
-                        A collection of our chef's
-                        finest creations.
+                        {t("signature.subtitle")}
                     </S.Subtitle>
 
+                    <S.Track>
 
-                    <S.Slider>
+                        {visibleDishes.map((dish) => (
 
-                        <S.Track
-                            ref={sliderRef}
-                            onScroll={handleScroll}
-                        >
+                            <S.Card key={dish.id}>
 
-                            {loopDishes.map((dish)=>(
+                                <S.Image
+                                    src={dish.image}
+                                    alt={dish.name}
+                                    onError={(e) => {
+                                        e.currentTarget.src =
+                                            "/images/placeholder.avif";
+                                    }}
+                                />
 
-                                <S.Card key={dish.id}>
+                                <S.Name>
+                                    {dish.name}
+                                </S.Name>
 
+                                <S.Description>
+                                    {t(`signatureDishes.${dish.id}`)}
+                                </S.Description>
 
-                                    <S.Image
-                                        src={dish.image}
-                                        alt={dish.name}
-                                        onError={(e) => {
-                                            e.currentTarget.src = "/images/placeholder.avif";
-                                        }}
+                                <S.Price>
+                                    {dish.price} ₴
+                                </S.Price>
 
-                                    />
+                            </S.Card>
 
+                        ))}
 
-                                    <S.Name>
-                                        {dish.name}
-                                    </S.Name>
+                    </S.Track>
 
-
-                                    <S.Description>
-                                        {dish.description}
-                                    </S.Description>
-
-
-                                    <S.Price>
-                                        {dish.price}
-                                    </S.Price>
-
-
-                                </S.Card>
-
-                            ))}
-
-                        </S.Track>
-
-                    </S.Slider>
                     <S.Controls>
 
-                        <S.ArrowButton onClick={scrollPrev}>
+                        <S.ArrowButton
+                            onClick={prevPage}
+                            disabled={currentPage === 0}
+                        >
                             ←
                         </S.ArrowButton>
 
-                        <S.ArrowButton onClick={scrollNext}>
+                        <S.Dots>
+
+                            {Array.from({
+                                length: totalPages
+                            }).map((_, index) => (
+
+                                <S.Dot
+                                    key={index}
+                                    active={currentPage === index}
+                                    onClick={() => setCurrentPage(index)}
+                                />
+
+                            ))}
+
+                        </S.Dots>
+
+                        <S.ArrowButton
+                            onClick={nextPage}
+                            disabled={
+                                currentPage === totalPages - 1
+                            }
+                        >
                             →
                         </S.ArrowButton>
 

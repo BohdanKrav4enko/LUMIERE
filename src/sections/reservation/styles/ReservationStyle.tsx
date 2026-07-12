@@ -120,7 +120,7 @@ export const Title = styled.h2`
 
 
     font-size:
-        clamp(55px, 8vw, 110px);
+        clamp(40px, 8vw, 82px);
 
 
     font-weight: 400;

@@ -1,7 +1,11 @@
 import * as S from "./styles/MenuStyle";
 import {MenuAccordion} from "../../components/menuAccordion";
+import {useTranslation} from "react-i18next";
 
 export const Menu = () => {
+
+    const { t } = useTranslation()
+
     return (
             <S.Section id="menu">
 
@@ -12,7 +16,7 @@ export const Menu = () => {
                     </S.Number>
 
                     <S.Title>
-                        Menu
+                        {t("menu.title")}
                     </S.Title>
 
 

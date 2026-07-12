@@ -1,11 +1,12 @@
-import { MotionSection } from "../../components";
 import * as S from "./styles/GalleryStyle";
 import {images} from "../../data/gallery.ts";
+import {useTranslation} from "react-i18next";
 
 export const Gallery = () => {
-    return (
-        <MotionSection>
 
+    const { t } = useTranslation();
+
+    return (
             <S.Section id="gallery">
 
                 <S.Wrapper>
@@ -19,12 +20,12 @@ export const Gallery = () => {
 
 
                         <S.Title>
-                            Gallery
+                            {t("gallery.title")}
                         </S.Title>
 
 
                         <S.Description>
-                            Every detail tells a story.
+                            {t("gallery.description")}
                         </S.Description>
 
                     </S.Header>
@@ -61,7 +62,5 @@ export const Gallery = () => {
                 </S.Wrapper>
 
             </S.Section>
-
-        </MotionSection>
     );
 };

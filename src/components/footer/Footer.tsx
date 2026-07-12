@@ -1,7 +1,10 @@
 import * as S from "./styles/FooterStyle";
-import {scrollToSection} from "../../utils";
+import { scrollToSection } from "../../utils";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+    const { t } = useTranslation();
+
     return (
         <S.FooterWrapper>
 
@@ -9,11 +12,9 @@ export const Footer = () => {
                 LUMIÈRE
             </S.Logo>
 
-
             <S.Description>
-                Fine dining experience
+                {t("footer.description")}
             </S.Description>
-
 
             <S.Links>
 
@@ -22,23 +23,21 @@ export const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Instagram
+                    {t("footer.instagram")}
                 </S.Link>
 
                 <S.Link onClick={() => scrollToSection("reservation")}>
-                    Reserve
+                    {t("footer.reserve")}
                 </S.Link>
 
                 <S.Link onClick={() => scrollToSection("signature")}>
-                    Menu
+                    {t("footer.menu")}
                 </S.Link>
 
             </S.Links>
 
-
             <S.Bottom>
-                © 2026 Lumière.
-                All rights reserved.
+                {t("footer.copyright", { year: new Date().getFullYear() })}
             </S.Bottom>
 
         </S.FooterWrapper>

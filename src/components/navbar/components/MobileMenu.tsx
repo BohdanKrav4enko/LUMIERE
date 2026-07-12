@@ -3,7 +3,7 @@ import {scrollToSection} from "../../../utils";
 import type Lenis from "lenis";
 import {type RefObject} from "react";
 import {useLockBodyScroll} from "../../../hooks";
-
+import { useTranslation } from "react-i18next";
 
 interface MobileMenuProps {
     isOpen: boolean;
@@ -22,6 +22,8 @@ export const MobileMenu = ({
         lenisRef,
     );
 
+    const { t } = useTranslation();
+
     return (
         <>
             <S.Burger
@@ -36,41 +38,41 @@ export const MobileMenu = ({
             <S.MobileMenu $open={isOpen}>
 
                 <S.MobileMenuSubtitle>
-                    Navigation
+                    {t("mobileMenu.navigation")}
                 </S.MobileMenuSubtitle>
 
                 <S.MobileLink onClick={() => {
-                    scrollToSection("about")
-                    setIsOpen(!isOpen)
+                    scrollToSection("about");
+                    setIsOpen(false);
                 }}>
-                    About
+                    {t("navbar.about")}
                 </S.MobileLink>
 
                 <S.MobileLink onClick={() => {
-                    scrollToSection("menu")
-                    setIsOpen(!isOpen)
+                    scrollToSection("menu");
+                    setIsOpen(false);
                 }}>
-                    Menu
+                    {t("navbar.menu")}
                 </S.MobileLink>
 
                 <S.MobileLink onClick={() => {
-                    scrollToSection("gallery")
-                    setIsOpen(!isOpen)
+                    scrollToSection("gallery");
+                    setIsOpen(false);
                 }}>
-                    Gallery
+                    {t("navbar.gallery")}
                 </S.MobileLink>
 
                 <S.MobileLink onClick={() => {
-                    scrollToSection("contact")
-                    setIsOpen(!isOpen)
+                    scrollToSection("reservation");
+                    setIsOpen(false);
                 }}>
-                    Contact
+                    {t("navbar.reserve")}
                 </S.MobileLink>
 
                 <S.MobileFooter>
-                    LUMIÈRE
-                    <br/>
-                    Fine Dining Experience
+                    LUMIÈRE KYIV
+                    <br />
+                    {t("mobileMenu.footer")}
                 </S.MobileFooter>
 
             </S.MobileMenu>

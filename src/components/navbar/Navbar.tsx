@@ -4,12 +4,16 @@ import {scrollToSection} from "../../utils";
 import {MobileMenu} from "./components/MobileMenu.tsx";
 import {type RefObject, useState} from "react";
 import type Lenis from "lenis";
+import {useTranslation} from "react-i18next";
+import {LanguageSwitcher} from "../languageSwitcher";
 
 export interface PropsLenisRef {
     lenisRef: RefObject<Lenis | null>;
 }
 
 export const Navbar = ({ lenisRef  }: PropsLenisRef) => {
+
+    const { t } = useTranslation();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -25,21 +29,22 @@ export const Navbar = ({ lenisRef  }: PropsLenisRef) => {
 
                     <NavLinks>
                         <NavLink onClick={() => scrollToSection("about")}>
-                            About
+                            {t("navbar.about")}
                         </NavLink>
 
                         <NavLink onClick={() => scrollToSection("signature")}>
-                            Menu
+                            {t("navbar.menu")}
                         </NavLink>
 
                         <NavLink onClick={() => scrollToSection("gallery")}>
-                            Gallery
+                            {t("navbar.gallery")}
                         </NavLink>
 
                         <NavLink onClick={() => scrollToSection("reservation")}>
-                            Reserve
+                            {t("navbar.reserve")}
                         </NavLink>
                     </NavLinks>
+                    <LanguageSwitcher />
                     <MobileMenu
                         lenisRef={lenisRef}
                         isOpen={isOpen}

@@ -1,22 +1,19 @@
 import { useState } from "react";
 import * as S from "./styles/GuestSelectStyle";
+import {useTranslation} from "react-i18next";
 
 interface Props {
     value: string;
     onChange: (value: string) => void;
 }
 
-const guests = [
-    "1 Guests",
-    "2 Guests",
-    "3 Guests",
-    "4 Guests",
-];
 
 export const GuestSelect = ({
                                 value,
                                 onChange,
                             }: Props) => {
+
+    const { t } = useTranslation();
 
     const [open, setOpen] = useState(false);
 
@@ -26,6 +23,8 @@ export const GuestSelect = ({
         setOpen(false);
     };
 
+    const guests = [1, 2, 3, 4];
+
 
     return (
         <S.Wrapper>
@@ -34,7 +33,7 @@ export const GuestSelect = ({
                 type="button"
                 onClick={() => setOpen(!open)}
             >
-                {value || "Number of guests"}
+                {value || t("guestSelect.placeholder")}
 
                 <S.Arrow $open={open}>
                     ↓
@@ -43,12 +42,16 @@ export const GuestSelect = ({
 
 
             <S.Options $open={open}>
-                {guests.map((item) => (
+                {guests.map((guest) => (
                     <S.Option
-                        key={item}
-                        onClick={() => handleSelect(item)}
+                        key={guest}
+                        onClick={() =>
+                            handleSelect(
+                                t(`guestSelect.guests.${guest}`)
+                            )
+                        }
                     >
-                        {item}
+                        {t(`guestSelect.guests.${guest}`)}
                     </S.Option>
                 ))}
             </S.Options>

@@ -1,9 +1,13 @@
 import * as S from "./styles/HeroStyle";
 import {MotionSection} from "../../components";
 import {scrollToSection} from "../../utils";
+import {useTranslation} from "react-i18next";
 
 
 export const Hero = () => {
+
+    const {t} = useTranslation();
+
     return (
         <MotionSection>
             <S.HeroWrapper>
@@ -16,17 +20,20 @@ export const Hero = () => {
                         L U M I È R E
                     </S.Title>
 
+                    <S.Title>
+                        K Y I V
+                    </S.Title>
+
                     <S.Subtitle>
-                        A journey of exceptional taste
+                        {t("hero.subtitle")}
                     </S.Subtitle>
 
                     <S.Description>
-                        Where culinary art meets timeless elegance.
-                        Discover an unforgettable fine dining experience.
+                        {t("hero.description")}
                     </S.Description>
 
-                    <S.Button onClick={()=>scrollToSection("reservation")}>
-                        Reserve a Table
+                    <S.Button onClick={() => scrollToSection("reservation")}>
+                        {t("hero.button")}
                     </S.Button>
 
                 </S.Content>

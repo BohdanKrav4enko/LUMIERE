@@ -66,14 +66,12 @@ export const Title = styled.h2`
     margin-bottom: 25px;
 `;
 
-export const Slider = styled.div`
-    overflow: hidden;
-`;
 
 export const Track = styled.div`
 
     display: flex;
     gap: 30px;
+    justify-content: center;
 
 
     overflow-x: auto;
@@ -322,16 +320,31 @@ export const ArrowButton = styled.button`
         font-size: 18px;
     }
 `;
-export const Pagination = styled.div`
-    min-width: 90px;
+export const Dots = styled.div`
+    display: flex;
 
-    color: ${({ theme }) => theme.colors.muted};
+    align-items: center;
 
-    font-size: 14px;
+    gap: 10px;
+`;
 
-    letter-spacing: 0.35em;
+export const Dot = styled.button<{ active: boolean }>`
+    width: ${({ active }) => (active ? "28px" : "10px")};
 
-    text-align: center;
+    height: 10px;
 
-    user-select: none;
+    border: none;
+
+    border-radius: 999px;
+
+    background: ${({ active, theme }) =>
+    active ? theme.colors.gold : "rgba(198, 161, 91, 0.25)"};
+
+    cursor: pointer;
+
+    transition: ${({ theme }) => theme.transition.default};
+
+    &:hover {
+        opacity: 0.8;
+    }
 `;

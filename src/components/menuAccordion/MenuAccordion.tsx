@@ -1,9 +1,12 @@
-import { useState } from "react";
+import {useState} from "react";
 import * as S from "./styles/MenuAccordionStyle";
-import { menu } from "../../data/menu";
+import {menu} from "../../data/menu";
+import {useTranslation} from "react-i18next";
 
 
 export const MenuAccordion = () => {
+
+    const { t } = useTranslation();
 
     const [openCategory, setOpenCategory] = useState<string | null>(null);
 
@@ -30,7 +33,7 @@ export const MenuAccordion = () => {
                     >
 
                         <S.CategoryTitle>
-                            {category.category}
+                            {t(`menuCategories.${category.category}`)}
                         </S.CategoryTitle>
 
 
@@ -46,7 +49,6 @@ export const MenuAccordion = () => {
                         </S.Arrow>
 
                     </S.Header>
-
 
 
                     <S.Content
@@ -73,13 +75,13 @@ export const MenuAccordion = () => {
                                             </S.Name>
 
                                             <S.Price>
-                                                {dish.price}
+                                                {dish.price} ₴
                                             </S.Price>
                                         </S.DishHeader>
 
 
                                         <S.Description>
-                                            {dish.description}
+                                            {t(`${category.id}.${dish.id}`)}
                                         </S.Description>
 
                                     </S.DishInfo>

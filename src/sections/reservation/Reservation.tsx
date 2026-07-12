@@ -2,12 +2,15 @@ import {MotionSection, ReservationModal, Notification} from "../../components";
 import * as S from "./styles/ReservationStyle";
 import {useState} from "react";
 import type {PropsLenisRef} from "../../components/navbar/Navbar.tsx";
+import {useTranslation} from "react-i18next";
 
 
-export const Reservation = ({ lenisRef  }: PropsLenisRef) => {
+export const Reservation = ({lenisRef}: PropsLenisRef) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
+
+    const {t} = useTranslation();
 
     return (<>
         <MotionSection>
@@ -21,25 +24,24 @@ export const Reservation = ({ lenisRef  }: PropsLenisRef) => {
 
 
                     <S.Title>
-                        Reserve your table
+                        {t("reservation.title")}
                     </S.Title>
 
 
                     <S.Description>
-                        An unforgettable evening
-                        awaits you.
+                        {t("reservation.description")}
                     </S.Description>
 
 
                     <S.Button onClick={() => setIsOpen(true)}>
-                        Book a table
+                        {t("reservation.button")}
                     </S.Button>
 
 
                     <S.Info>
-                        Paris, France
+                        {t("reservation.location")}
                         <br/>
-                        +33 1 42 00 00 00
+                        {t("reservation.phone")}
                     </S.Info>
 
                 </S.Wrapper>
@@ -58,6 +60,9 @@ export const Reservation = ({ lenisRef  }: PropsLenisRef) => {
                 }, 4000);
             }}
         />
-        <Notification open={showNotification} />
-    </> );
+        <Notification title={t("notification.reservationConfirmed")}
+                      message={t("notification.reservationMessage")}
+                      open={showNotification}
+        />
+    </>);
 };

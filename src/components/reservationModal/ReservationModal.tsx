@@ -5,6 +5,7 @@ import {GuestSelect} from "../guestSelect";
 import {useLockBodyScroll} from "../../hooks";
 import type {RefObject} from "react";
 import type Lenis from "lenis";
+import {useTranslation} from "react-i18next";
 
 interface Props {
     isOpen: boolean;
@@ -15,7 +16,7 @@ interface Props {
 
 type ReservationFormData = {
     name: string;
-    phone: number;
+    phone: string;
     date: string;
     time: string;
     guests: string;
@@ -28,6 +29,9 @@ export const ReservationModal = ({
                                      lenisRef,
                                      onSuccess,
                                  }: Props) => {
+
+    const { t } = useTranslation();
+
     const {
         register,
         handleSubmit,
@@ -44,7 +48,7 @@ export const ReservationModal = ({
             import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
             {
                 ...data,
-                message: data.message || "No special requests",
+                message: data.message ||  t("reservationModal.defaultMessage"),
             },
             import.meta.env.VITE_EMAILJS_PUBLIC_KEY
         );
@@ -81,19 +85,19 @@ export const ReservationModal = ({
 
             <S.Content>
                 <S.Subtitle>
-                    Reservation
+                    {t("reservationModal.subtitle")}
                 </S.Subtitle>
 
                 <S.Title>
-                    Reserve your table
+                    {t("reservationModal.title")}
                 </S.Title>
 
                 <S.Form onSubmit={handleSubmit(onSubmit)}>
                     <S.Field>
                         <S.Input
-                            placeholder="Your name"
+                            placeholder={t("reservationModal.namePlaceholder")}
                             {...register("name", {
-                                required: "Please enter your name",
+                                required: t("reservationModal.errors.nameRequired"),
                             })}
                         />
                         {errors.name && (
@@ -105,12 +109,12 @@ export const ReservationModal = ({
                     <S.Field>
                         <S.Input
                             type="tel"
-                            placeholder="Phone number"
+                            placeholder={t("reservationModal.phonePlaceholder")}
                             {...register("phone", {
-                                required: "Please enter your phone number",
+                                required: t("reservationModal.errors.phoneRequired"),
                                 pattern: {
                                     value: /^[+]?[0-9\s\-()]{7,20}$/,
-                                    message: "Please enter a valid phone number",
+                                    message: t("reservationModal.errors.phoneInvalid"),
                                 },
                             })}
                         />
@@ -122,14 +126,14 @@ export const ReservationModal = ({
                     </S.Field>
                     <S.Row>
                         <S.Field>
-                            <S.Label>Date</S.Label>
+                            <S.Label>{t("reservationModal.date")}</S.Label>
 
                             <S.Input
                                 type="date"
                                 min={minDate}
                                 max={maxDate}
                                 {...register("date", {
-                                    required: "Please select a date",
+                                    required: t("reservationModal.errors.dateRequired"),
                                 })}
                             />
 
@@ -141,12 +145,12 @@ export const ReservationModal = ({
                         </S.Field>
 
                         <S.Field>
-                            <S.Label>Time</S.Label>
+                            <S.Label>{t("reservationModal.time")}</S.Label>
 
                             <S.Input
                                 type="time"
                                 {...register("time", {
-                                    required: "Please select a time",
+                                    required: t("reservationModal.errors.timeRequired"),
                                 })}
                             />
 
@@ -161,8 +165,9 @@ export const ReservationModal = ({
                         <Controller
                             name="guests"
                             control={control}
+                            defaultValue=""
                             rules={{
-                                required: "Please select number of guests"
+                                required: t("reservationModal.errors.guestsRequired")
                             }}
                             render={({field}) => (
                                 <GuestSelect
@@ -180,7 +185,7 @@ export const ReservationModal = ({
                     </S.Field>
                     <S.Field>
                         <S.TextArea
-                            placeholder="Special requests"
+                            placeholder={t("reservationModal.messagePlaceholder")}
                             {...register("message")}
                         />
                     </S.Field>
@@ -189,8 +194,8 @@ export const ReservationModal = ({
                         disabled={isSubmitting}
                     >
                         {isSubmitting
-                            ? "Sending..."
-                            : "Reserve"}
+                            ? t("reservationModal.sending")
+                            : t("reservationModal.submit")}
                     </S.Submit>
 
                 </S.Form>

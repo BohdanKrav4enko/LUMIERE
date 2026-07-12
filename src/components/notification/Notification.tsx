@@ -2,20 +2,21 @@ import * as S from "./styles/NotificationStyle";
 
 interface NotificationProps {
     open: boolean;
+    title: string;
+    message: string;
 }
 
 export const Notification = ({
-                                 open,
+                                 open, title, message,
                              }: NotificationProps) => {
     return (
         <S.Container $open={open}>
             <S.Title>
-                Reservation confirmed
+                {title}
             </S.Title>
 
             <S.Text>
-                Thank you for choosing Lumière.
-                We look forward to welcoming you.
+                {message}
             </S.Text>
         </S.Container>
     );

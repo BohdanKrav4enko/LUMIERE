@@ -58,10 +58,13 @@ export const CategoryTitle = styled.h3`
 
     letter-spacing: .08em;
 
+    @media (max-width: ${({theme}) => theme.media.tablet}) {
 
+        font-size: 34px;
+    }
     @media (max-width: ${({theme}) => theme.media.mobile}) {
 
-        font-size: 30px;
+        font-size: 24px;
     }
 `;
 

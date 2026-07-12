@@ -4,7 +4,7 @@ export const signatureDishes = [
         name: "Truffle Risotto",
         description:
             "Wild mushrooms, parmesan and white truffle",
-        price: "€48",
+        price: "548",
         image: "/images/signatureMenu/signature-Truffle-Risotto.webp",
     },
     {
@@ -12,7 +12,7 @@ export const signatureDishes = [
         name: "Wagyu Tenderloin",
         description:
             "Japanese wagyu with seasonal vegetables",
-        price: "€95",
+        price: "495",
         image: "/images/signatureMenu/signature-Wagyu-Tenderloin.webp",
     },
     {
@@ -20,7 +20,7 @@ export const signatureDishes = [
         name: "Beef Wellington",
         description:
             "Premium beef fillet wrapped in puff pastry with mushroom duxelles",
-        price: "€85",
+        price: "485",
         image: "/images/signatureMenu/signature-BeefWellington.webp",
     },
     {
@@ -28,7 +28,7 @@ export const signatureDishes = [
         name: "Lobster Thermidor",
         description:
             "Classic lobster with creamy mustard sauce",
-        price: "€120",
+        price: "1200",
         image: "/images/signatureMenu/signature-LobsterThermidor.webp",
     },
     {
@@ -36,7 +36,7 @@ export const signatureDishes = [
         name: "Duck Royale",
         description:
             "Roasted duck with cherry reduction",
-        price: "€68",
+        price: "468",
         image: "/images/signatureMenu/signature-DuckRoyale.webp",
     },
     {
@@ -44,7 +44,7 @@ export const signatureDishes = [
         name: "Chocolate Soufflé",
         description:
             "Dark chocolate and vanilla cream",
-        price: "€24",
+        price: "424",
         image: "/images/signatureMenu/signatureChocolateSouffle.webp",
     },
 ];

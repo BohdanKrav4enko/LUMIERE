@@ -73,7 +73,7 @@ export const CloseButton = styled.button`
 export const Title = styled.h2`
     font-family: ${({ theme }) => theme.fonts.heading};
 
-    font-size: clamp(34px, 6vw, 58px);
+    font-size: clamp(28px, 6vw, 48px);
 
     font-weight: 400;
 
@@ -97,6 +97,7 @@ export const Subtitle = styled.span`
     color: ${({ theme }) => theme.colors.gold};
 
     font-size: 10px;
+    margin-bottom: 10px;
 
     letter-spacing: .4em;
 

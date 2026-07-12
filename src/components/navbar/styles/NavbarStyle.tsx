@@ -92,7 +92,7 @@ export const NavLinks = styled.div`
     align-items: center;
 
 
-    @media(max-width:${({ theme }) => theme.media.tablet}) {
+    @media(max-width: 930px) {
         display: none;
     }
 `;
@@ -129,7 +129,6 @@ export const NavLink = styled.a`
     @media(max-width:${({ theme }) => theme.media.desktop}) {
 
         margin-left: 30px;
-
         font-size: 13px;
     }
 `;
@@ -148,7 +147,7 @@ export const Burger = styled.button`
 
     z-index: 1001;
 
-    @media (max-width: ${({theme}) => theme.media.tablet}) {
+    @media (max-width: 930px) {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -249,7 +248,7 @@ export const MobileLink = styled.a`
 
     font-family: ${({ theme }) => theme.fonts.heading};
 
-    font-size: clamp(42px, 7vw, 64px);
+    font-size: clamp(32px, 7vw, 64px);
 
     font-weight: 400;
 

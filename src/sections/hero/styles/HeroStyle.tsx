@@ -44,13 +44,19 @@ export const Content = styled.div`
 
 
 export const Title = styled.h1`
-    font-size: clamp(60px, 10vw, 130px);
+    font-size: clamp(40px, 10vw, 80px);
 
     color: ${({ theme }) => theme.colors.text};
 
     letter-spacing: 0.25em;
 
+    white-space: nowrap;
+
     margin-bottom: 25px;
+
+    @media (max-width: ${({ theme }) => theme.media.mobile}) {
+        letter-spacing: 0.15em;
+    }
 `;
 
 
