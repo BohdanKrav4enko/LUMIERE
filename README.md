@@ -136,6 +136,12 @@ This project demonstrates:
 
 Frontend Developer
 
+GitHub:
+https://github.com/BohdanKrav4enko
+
+Portfolio:
+https://bohdankrav4enko.vercel.app/
+
 ---
 
 ## 📄 License
