@@ -77,7 +77,7 @@ src
 
 ```bash
 
-git clone https://github.com/your-username/lumiere-kyiv.git
+git clone https://github.com/BohdanKrav4enko/LUMIERE.git
 ```
 
 ### Install dependencies
